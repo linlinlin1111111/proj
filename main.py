@@ -24,3 +24,7 @@ def generate_maze(maze, r, c):
 def set_start_end(maze):
     maze[1][1] = 'S'  # Стартовая точка
     maze[-2][-2] = 'E'  # Конечная точка
+
+def print_maze(maze):
+    for row in maze:
+        print(''.join(row))
