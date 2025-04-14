@@ -21,3 +21,6 @@ def generate_maze(maze, r, c):
             wall_r, wall_c = r + dr // 2, c + dc // 2
             maze[wall_r][wall_c] = ' '
             generate_maze(maze, nr, nc)
+def set_start_end(maze):
+    maze[1][1] = 'S'  # Стартовая точка
+    maze[-2][-2] = 'E'  # Конечная точка
