@@ -28,3 +28,20 @@ def set_start_end(maze):
 def print_maze(maze):
     for row in maze:
         print(''.join(row))
+def find_path(maze, r, c, visited):
+    if maze[r][c] == 'E':
+        return True
+    if maze[r][c] == '#' or visited[r][c]:
+        return False
+
+    visited[r][c] = True
+    if maze[r][c] != 'S':
+        maze[r][c] = '.'
+
+    for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        if find_path(maze, r + dr, c + dc, visited):
+            return True
+
+    if maze[r][c] != 'S':
+        maze[r][c] = ' '
+    return False
