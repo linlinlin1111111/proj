@@ -1,16 +1,9 @@
 import random
-def main():
-    pass
 
-if __name__ == "__main__":
-    main()
-
+DIRS = [(-2, 0), (2, 0), (0, -2), (0, 2)]
 
 def create_empty_maze(rows, cols):
     return [['#' for _ in range(cols)] for _ in range(rows)]
-import random
-
-DIRS = [(-2, 0), (2, 0), (0, -2), (0, 2)]
 
 def generate_maze(maze, r, c):
     maze[r][c] = ' '
@@ -21,13 +14,15 @@ def generate_maze(maze, r, c):
             wall_r, wall_c = r + dr // 2, c + dc // 2
             maze[wall_r][wall_c] = ' '
             generate_maze(maze, nr, nc)
+
 def set_start_end(maze):
-    maze[1][1] = 'S'  # Стартовая точка
-    maze[-2][-2] = 'E'  # Конечная точка
+    maze[1][1] = 'S'
+    maze[-2][-2] = 'E'
 
 def print_maze(maze):
     for row in maze:
         print(''.join(row))
+
 def find_path(maze, r, c, visited):
     if maze[r][c] == 'E':
         return True
@@ -57,10 +52,8 @@ def get_user_size():
         print("Invalid input. Using default 15x15.")
         return 15, 15
 
-
 def main():
     rows, cols = get_user_size()
-
     maze = create_empty_maze(rows, cols)
     generate_maze(maze, 1, 1)
     set_start_end(maze)
