@@ -45,3 +45,14 @@ def find_path(maze, r, c, visited):
     if maze[r][c] != 'S':
         maze[r][c] = ' '
     return False
+def main():
+    rows, cols = 15, 15  # Размер лабиринта
+    maze = create_empty_maze(rows, cols)
+    generate_maze(maze, 1, 1)
+    set_start_end(maze)
+    visited = [[False for _ in range(cols)] for _ in range(rows)]
+    find_path(maze, 1, 1, visited)
+    print_maze(maze)
+
+if __name__ == "__main__":
+    main()
