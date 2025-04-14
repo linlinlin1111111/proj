@@ -1,4 +1,4 @@
-
+import random
 def main():
     pass
 
@@ -45,8 +45,22 @@ def find_path(maze, r, c, visited):
     if maze[r][c] != 'S':
         maze[r][c] = ' '
     return False
+
+def get_user_size():
+    try:
+        rows = int(input("Enter number of rows (odd number ≥ 11): "))
+        cols = int(input("Enter number of columns (odd number ≥ 11): "))
+        if rows < 11 or cols < 11 or rows % 2 == 0 or cols % 2 == 0:
+            raise ValueError
+        return rows, cols
+    except:
+        print("Invalid input. Using default 15x15.")
+        return 15, 15
+
+
 def main():
-    rows, cols = 15, 15  # Размер лабиринта
+    rows, cols = get_user_size()
+
     maze = create_empty_maze(rows, cols)
     generate_maze(maze, 1, 1)
     set_start_end(maze)
